@@ -30,7 +30,7 @@ class VectorND:
             inputs = [val for val in args]
             self.values = array.array(dtype, inputs)
         else:
-            raise TypeError('You must pass in int/float value for x and y!')
+            raise TypeError("You must pass in int/float value for x and y!")
 
     def __repr__(self) -> str:
         """Return the vector representation.
@@ -38,7 +38,7 @@ class VectorND:
         Returns:
             The representation of the vector.
         """
-        return f'vector.VectorND({self.values})'
+        return f"vector.VectorND({self.values})"
 
     def __str__(self) -> str:
         """The vector as a string.
@@ -46,7 +46,7 @@ class VectorND:
         Returns:
             The vector as a string.
         """
-        return f'({self.values})'
+        return f"({self.values})"
 
     def __abs__(self) -> float:
         """Return the length (magnitude) of the vector.
@@ -81,7 +81,7 @@ class VectorND:
             False, else.
         """
         if not isinstance(other_vector, VectorND):
-            raise TypeError('You must pass in a VectorND instance!')
+            raise TypeError("You must pass in a VectorND instance!")
         return abs(self) < abs(other_vector)
 
     def __add__(self, other_vector: VectorND) -> VectorND:
@@ -94,7 +94,7 @@ class VectorND:
             The additon vector of the self and the other vector.
         """
         if not isinstance(other_vector, VectorND):
-            raise TypeError('You must pass in a VectorND instance!')
+            raise TypeError("You must pass in a VectorND instance!")
         result = [v1 + v2 for v1, v2 in zip(self.values, other_vector.values)]
         return VectorND(result)
 
@@ -108,13 +108,11 @@ class VectorND:
             The subtraction vector of the self and the other vector.
         """
         if not isinstance(other_vector, VectorND):
-            raise TypeError('You must pass in a VectorND instance!')
+            raise TypeError("You must pass in a VectorND instance!")
         result = [v1 - v2 for v1, v2 in zip(self.values, other_vector.values)]
         return VectorND(result)
 
-    def __mul__(
-        self, other: Union[VectorND, Number]
-    ) -> Union[VectorND, Number]:
+    def __mul__(self, other: Union[VectorND, Number]) -> Union[VectorND, Number]:
         """Return the multiplication of self and the other vector/number.
 
         Args:
@@ -127,9 +125,10 @@ class VectorND:
             The multiplication of self and the other vector/number.
         """
         if isinstance(other, VectorND):
-            return sum([v1 * v2 for v1, v2 in zip(self.values, other.values)])
+            spr: Number = sum([v1 * v2 for v1, v2 in zip(self.values, other.values)])
+            return spr
         if not isinstance(other, int) and not isinstance(other, float):
-            raise TypeError('You must pass in an int/float!')
+            raise TypeError("You must pass in an int/float!")
         return VectorND([v * other for v in self.values])
 
     def __truediv__(self, other: Number) -> VectorND:
@@ -146,7 +145,7 @@ class VectorND:
             The multiplication of self and the other vector/number.
         """
         if not isinstance(other, int) and not isinstance(other, float):
-            raise TypeError('You must pass in an int/float!')
+            raise TypeError("You must pass in an int/float!")
         return VectorND([v / other for v in self.values])
 
     def __len__(self) -> int:

@@ -21,9 +21,7 @@ def naive_cython_clip_vector(
     max_value: Number,
     vector_out: VectorND,
 ) -> None:
-    _naive_cython_clip_vector(
-        vector_in.values, min_value, max_value, vector_out.values
-    )
+    _naive_cython_clip_vector(vector_in.values, min_value, max_value, vector_out.values)
 
 
 def cython_clip_vector(
@@ -32,6 +30,4 @@ def cython_clip_vector(
     max_value: Number,
     vector_out: VectorND,
 ) -> None:
-    _cython_clip_vector(
-        vector_in.values, min_value, max_value, vector_out.values
-    )
+    _cython_clip_vector(vector_in.values, min_value, max_value, vector_out.values)

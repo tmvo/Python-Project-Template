@@ -8,12 +8,7 @@ from setuptools import Extension
 from setuptools import setup
 
 
-CYTHON_EXTENSIONS = [
-    Extension(
-        name="fastvector.cython_computations",
-        sources=["fastvector/cython_computations.pyx"]
-    )
-]
+CYTHON_EXTENSIONS = [Extension(name="fastvector.cython_computations", sources=["fastvector/cython_computations.pyx"])]
 
 EXT_MODULES = cythonize(CYTHON_EXTENSIONS, language_level="3")
 
